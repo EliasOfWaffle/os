@@ -15,4 +15,4 @@ mokutil
 zram-config
 rsync
 distinst
-ubuntu-desktop-installer
+ubiquity-frontend-gtk
