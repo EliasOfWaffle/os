@@ -1,4 +1,4 @@
-name: VanillaOS lunar
+name: Ubuntu Pure Lunar
 
 on:
   workflow_dispatch
@@ -29,5 +29,5 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: VanillaOS 2.0
+        name: Ubuntu Pure
         path: builds/
