@@ -21,7 +21,6 @@ apt-get autoremove --purge -f -q -y \
     ubuntu-desktop \
     ubuntu-session \
     apport \
-    snapd \
     update-manager \
     update-notifier
 
