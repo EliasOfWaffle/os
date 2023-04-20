@@ -70,7 +70,6 @@ cups-pk-helper
 dirmngr
 exfatprogs
 fwupd
-fwupd-amd64-signed
 firmware-sof-signed
 fprintd
 libpam-fprintd
@@ -123,9 +122,6 @@ libvdpau1
 mesa-vdpau-drivers
 vdpau-driver-all
 base-files
-apx
-abroot
-ikaros
 brltty
 speech-dispatcher
 speech-dispatcher-espeak-ng
@@ -201,11 +197,13 @@ gjs
 xorg
 libgdk-pixbuf2.0-bin
 plymouth-themes
-plymouth-theme-ubuntu
-plymouth-theme-ubuntu-bgrt
-plymouth-theme-ubuntu-logo
-plymouth-theme-ubuntu-text
-ubuntu-desktop-installer
+plymouth-theme-ubuntu-gnome-logo
+plymouth-theme-ubuntu-gnome-text
+ubiquity-casper
+ubiquity-frontend-debconf
+ubiquity-frontend-gtk
+ubiquity-frontend-gtk-panel
+ubiquity-slideshow-ubuntu
 
 switcheroo-control
 epiphany-browser
