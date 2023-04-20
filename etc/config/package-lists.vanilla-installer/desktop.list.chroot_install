@@ -204,7 +204,8 @@ plymouth-themes,
 plymouth-theme-ubuntu,
 plymouth-theme-ubuntu-bgrt,
 plymouth-theme-ubuntu-logo,
-plymouth-theme-ubuntu-text
+plymouth-theme-ubuntu-text,
+ubuntu-desktop-installer
 
 
 switcheroo-control
