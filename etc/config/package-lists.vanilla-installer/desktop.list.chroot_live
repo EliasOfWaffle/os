@@ -14,5 +14,4 @@ fwupdate
 mokutil
 zram-config
 rsync
-distinst
 ubiquity-frontend-gtk
