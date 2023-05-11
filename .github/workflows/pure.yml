@@ -4,18 +4,7 @@ on:
   workflow_dispatch
 
 jobs:
-    uses: actions/create-release@v1
-    id: create_release
-    with:
-      draft: false
-      prerelease: false
-      release_name: ${{ steps.version.outputs.version }}
-      tag_name: ${{ github.ref }}
-      body_path: CHANGELOG.md
-      env: 
-          GITHUB_TOKEN: ${{ github.token }}
-
-    build:
+  build:
     runs-on: ubuntu-22.04
     container:
       image: debian:bookworm
@@ -43,12 +32,27 @@ jobs:
         name: Ubuntu Pure
         path: builds/
 
+    - uses: actions/create-release@v1
+      id: create_release
+      with:
+        draft: false
+        prerelease: false
+        body: |
+          Ubuntu Pure Remix First Release
+            Based in Ubuntu 23.04 Lunar Lobster.
+            Ubuntu Pure Remix providing Ubuntu Remix Refisefuqui with trying to provide vanilla Gnome experience.
+        release_name: ${{ steps.version.outputs.version }}
+        tag_name: ${{ github.ref }}
+        body_path: CHANGELOG.md
+      env:
+          GITHUB_TOKEN: ${{ github.token }}
+
     - uses: actions/upload-release-asset@v1
-    env:
-      GITHUB_TOKEN: ${{ github.token }}
-    with:
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
-      asset_path: /builds
-      asset_name: Ubuntu Pure.zip
-      asset_content_type: application/gzip
-        
+      env:
+          GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: /builds
+        asset_name: Ubuntu Pure.zip
+        asset_content_type: application/gzip
+
