@@ -19,10 +19,7 @@ echo "P: Begin executing remove-blacklisted-packages chroot hook..."
 
 apt-get autoremove --purge -f -q -y \
     ubuntu-desktop \
-    ubuntu-session \
-    apport \
-    update-manager \
-    update-notifier
+    ubuntu-session
 
 rm -R ../ubuntu-seeds ../platform
 
