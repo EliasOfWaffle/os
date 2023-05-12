@@ -1,7 +1,6 @@
 name: Ubuntu Pure Lunar
 
-on:
-  workflow_dispatch
+on: workflow_dispatch
 
 jobs:
   build:
@@ -14,45 +13,45 @@ jobs:
       options: --privileged -it
 
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: De-bloat stock image
-      run: |
-        rm -r /run/host/usr/share/dotnet
-        rm -r /run/host${{ runner.tool_cache }}
+      - uses: actions/checkout@v3
 
-    - name: Install needed packages
-      run: apt update && apt install debootstrap -y
+      - name: De-bloat stock image
+        run: |
+          rm -r /run/host/usr/share/dotnet
+          rm -r /run/host${{ runner.tool_cache }}
 
-    - name: Build ISO
-      run: ./build.sh etc/terraform.conf
+      - name: Install needed packages
+        run: apt update && apt install debootstrap -y
 
-    - uses: actions/upload-artifact@v3
-      with:
-        name: Ubuntu Pure
-        path: builds/
+      - name: Build ISO
+        run: ./build.sh etc/terraform.conf
 
-    - uses: actions/create-release@v1
-      id: create_release
-      with:
-        draft: false
-        prerelease: false
-        body: |
-          Ubuntu Pure Remix First Release
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Ubuntu Pure
+          path: builds/
+
+      - uses: actions/create-release@v1
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release-1.0 ${{ github.ref }}
+          body: |
+            Ubuntu Pure Remix First Release
             Based in Ubuntu 23.04 Lunar Lobster.
             Ubuntu Pure Remix providing Ubuntu Remix Refisefuqui with trying to provide vanilla Gnome experience.
-        release_name: ${{ steps.version.outputs.version }}
-        tag_name: ${{ github.ref }}
-        body_path: CHANGELOG.md
-      env:
-          GITHUB_TOKEN: ${{ github.token }}
+          draft: false
+          prerelease: false
+          env:
+           GITHUB_TOKEN: ${{ github.token }}
 
-    - uses: actions/upload-release-asset@v1
-      env:
+      - uses: actions/upload-release-asset@v1
+        env:
           GITHUB_TOKEN: ${{ github.token }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: /builds
-        asset_name: Ubuntu Pure.zip
-        asset_content_type: application/gzip
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /builds
+          asset_name: Ubuntu Pure.zip
+          asset_content_type: application/gzip
 
