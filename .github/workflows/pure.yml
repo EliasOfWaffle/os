@@ -1,7 +1,6 @@
 name: Ubuntu Pure Lunar
 
-on:
-  workflow_dispatch
+on: workflow_dispatch
 
 jobs:
   build:
@@ -14,20 +13,52 @@ jobs:
       options: --privileged -it
 
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: De-bloat stock image
-      run: |
-        rm -r /run/host/usr/share/dotnet
-        rm -r /run/host${{ runner.tool_cache }}
+      - uses: actions/checkout@v3
 
-    - name: Install needed packages
-      run: apt update && apt install debootstrap -y
+      - name: De-bloat stock image
+        run: |
+          rm -r /run/host/usr/share/dotnet
+          rm -r /run/host${{ runner.tool_cache }}
 
-    - name: Build ISO
-      run: ./build.sh etc/terraform.conf
+      - name: Install needed packages
+        run: apt update && apt install debootstrap -y
 
-    - uses: actions/upload-artifact@v3
-      with:
-        name: Ubuntu Pure
-        path: builds/
+      - name: Build ISO
+        run: ./build.sh etc/terraform.conf
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Ubuntu Pure
+          path: builds/
+          
+      - uses: "actions/github-script@v6"
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          script: |
+            try {
+              const response = await github.rest.repos.createRelease({
+                draft: false,
+                generate_release_notes: true,
+                name: process.env.RELEASE_TAG,
+                owner: context.repo.owner,
+                prerelease: false,
+                repo: context.repo.repo,
+                tag_name: process.env.RELEASE_TAG,
+              });
+
+              core.exportVariable('RELEASE_ID', response.data.id);
+              core.exportVariable('RELEASE_UPLOAD_URL', response.data.upload_url);
+            } catch (error) {
+              core.setFailed(error.message);
+            }
+
+           
+      - uses: actions/upload-release-asset@v1
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /builds
+          asset_name: Ubuntu Pure.zip
+          asset_content_type: application/gzip
+
