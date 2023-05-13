@@ -210,11 +210,6 @@ libgdk-pixbuf2.0-bin
 plymouth-themes
 plymouth-theme-ubuntu-gnome-logo
 plymouth-theme-ubuntu-gnome-text
-ubiquity-casper
-ubiquity-frontend-debconf
-ubiquity-frontend-gtk
-ubiquity-frontend-gtk-panel
-ubiquity-slideshow-ubuntu
 linux-headers-6.2.0-20-generic
 
 switcheroo-control
