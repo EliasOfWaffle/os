@@ -141,6 +141,7 @@ network-manager-vpnc
 adwaita-icon-theme-full
 cheese
 cheese-common
+gnome-audio
 gnome-system-monitor
 gnome-backgrounds
 gnome-boxes
@@ -220,6 +221,7 @@ gnome-photos
 gnome-software
 gnome-disk-utility
 gnome-sushi
+gnome-text-editor
 epiphany-browser
 evince
 yelp
