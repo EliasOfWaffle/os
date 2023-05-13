@@ -139,10 +139,17 @@ network-manager-strongswan
 network-manager-vpnc
 # Gnome Desktop Packages from Vanilla: vanilla-base-desktop
 adwaita-icon-theme-full
+cheese
+cheese-common
 gnome-system-monitor
 gnome-backgrounds
+gnome-boxes
+gnome-calendar
 gnome-color-manager
 gnome-control-center
+gnome-clocks
+gnome-firmware
+gnome-font-viewer
 gnome-menus
 gnome-online-accounts
 gnome-online-miners
@@ -153,6 +160,7 @@ gnome-settings-daemon
 gnome-shell
 gnome-shell-extensions
 gnome-shell-extension-manager
+gnome-maps
 gnome-themes-extra
 gnome-user-docs
 gnome-user-share
@@ -160,6 +168,9 @@ gnome-accessibility-themes
 gnome-bluetooth
 gnome-keyring
 gnome-console
+gnome-connections
+gnome-contacts
+gnome-weather
 nautilus
 nautilus-share
 cracklib-runtime
@@ -197,8 +208,8 @@ gjs
 xorg
 libgdk-pixbuf2.0-bin
 plymouth-themes
-plymouth-theme-ubuntu-gnome-logo
-plymouth-theme-ubuntu-gnome-text
+plymouth-theme-ubuntu-logo
+plymouth-theme-ubuntu-logo-text
 ubiquity-casper
 ubiquity-frontend-debconf
 ubiquity-frontend-gtk
