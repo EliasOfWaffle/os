@@ -208,8 +208,8 @@ gjs
 xorg
 libgdk-pixbuf2.0-bin
 plymouth-themes
-plymouth-theme-ubuntu-logo
-plymouth-theme-ubuntu-logo-text
+plymouth-theme-ubuntu-gnome-logo
+plymouth-theme-ubuntu-gnome-text
 ubiquity-casper
 ubiquity-frontend-debconf
 ubiquity-frontend-gtk
